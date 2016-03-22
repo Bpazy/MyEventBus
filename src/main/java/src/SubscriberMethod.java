@@ -1,5 +1,6 @@
 package src;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class SubscriberMethod {
@@ -22,4 +23,11 @@ public class SubscriberMethod {
         this.threadMode = threadMode;
     }
 
+    public Class<?>[] getParameterTypes() {
+        return method.getParameterTypes();
+    }
+
+    public void invoke(Object o, Object... event) throws InvocationTargetException, IllegalAccessException {
+        method.invoke(o, event);
+    }
 }
