@@ -48,7 +48,7 @@ public class MyEventBus {
         for (Map.Entry<Object, SubscriberMethod> entry : methodMap.entrySet()) {
             Object o = entry.getKey();
             SubscriberMethod m = entry.getValue();
-            for (Class<?> c : parameterList) {
+            parameterList.forEach(c -> {
                 if (c.getTypeName().equals(event.getClass().getTypeName())) {
                     if (m.getThreadMode() == ThreadMode.MainThread) {
                         runInBackgroundThread(m, o, event);
@@ -56,7 +56,7 @@ public class MyEventBus {
                         runInMainThread(m, o, event);
                     }
                 }
-            }
+            });
         }
     }
 

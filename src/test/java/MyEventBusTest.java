@@ -1,5 +1,4 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 import src.MyEventBus;
 
 public class MyEventBusTest {
